@@ -1,5 +1,3 @@
-# [Silver V] 색종이 - 2563 
-
 # [Silver V] 너의 평점은 - 25206 
 
 [문제 링크](https://www.acmicpc.net/problem/25206) 
