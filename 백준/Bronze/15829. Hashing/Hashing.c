@@ -2,30 +2,20 @@
 
 #define M 1234567891
 
-long long	hash_func(int n, char *str)
-{
-	long long	result;
-	long long	r;
-
-	result = 0;
-	r = 1;
-	for(int i = 0; i < n; i++)
-	{
-		result = result + ((str[i] - 96) * r) % M;
-		r = (r * 31) % M;
-	}
-	return (result);
-}
 int main()
 {
-	int			n;
-	long long	result;
+	int len, i;
+	long long hash_value = 0, R = 1;
+	char str[51];
 
-	result  = 0;
-	scanf("%d\n", &n);
-	char		str[n];
-	scanf("%s", str);
+	scanf("%d %s", &len, str);
 
-	result = hash_func(n, str);
-	printf("%lld", result);
+	for (i = 0; i < len; i++)
+	{
+		hash_value = (hash_value + (str[i] - 'a' + 1) * R) % M;
+		R = (R * 31) % M;
+	}
+	printf("%lld\n", hash_value);
+
+	return 0;
 }
