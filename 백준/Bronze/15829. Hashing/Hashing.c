@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-long long	hash_func(int n, char c)
+#define M 1234567891
+
+long long	hash_func(int n, char *str)
 {
 	long long	result;
 	long long	r;
-	long long	new_c;
 
+	result = 0;
 	r = 1;
 	for(int i = 0; i < n; i++)
 	{
-		r *= 31;
+		result = result + ((str[i] - 96) * r) % M;
+		r = (r * 31) % M;
 	}
-	new_c = c - 96;
-	result = new_c * r;
 	return (result);
 }
-
 int main()
 {
 	int			n;
@@ -26,9 +26,6 @@ int main()
 	char		str[n];
 	scanf("%s", str);
 
-	for(int i = 0; i < n; i++)
-	{
-		result += hash_func(i, str[i]);
-	}
+	result = hash_func(n, str);
 	printf("%lld", result);
 }
